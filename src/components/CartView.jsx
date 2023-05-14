@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CartView = (props) => {
 
+    const navigate = useNavigate()
+
     const enviarDatos = (name)=> {
         props.delete(name)
+    }
+
+    const onCatalog = () => {
+        navigate('/catalog')
     }
 
     useEffect(()=> {
@@ -30,7 +37,7 @@ const CartView = (props) => {
                             <td>{item.product.name}</td>
                             <td>{item.product.price}</td>
                             <td>{item.quantity}</td>
-                            <td>{item.total}</td>
+                            <td>1234</td>
                             <td><button className='btn btn-danger'
                             onClick={() => enviarDatos(item.product.name)}>eliminar</button></td>
                         </tr>)
@@ -40,13 +47,13 @@ const CartView = (props) => {
                 <tfoot>
                     <tr>
                         <td colSpan="3" className="text-end fw-bold">Total</td>
-                        <td colSpan="2" className="text-start fw-bold">{props.items.reduce((accumulator, element) => {
-                            return accumulator + element.total
-                        }, 0
-                        )}</td>
+                        <td colSpan="2" className="text-start fw-bold"></td>
                     </tr>
                 </tfoot>
             </table>
+            <button
+            className='btn btn-success'
+            onClick={onCatalog}>Keep Shopping</button>
             </>
   )
 }

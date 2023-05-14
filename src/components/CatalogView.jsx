@@ -3,7 +3,7 @@ import { getProducts } from "../services/productService";
 import CatalogItem from "./CatalogItem";
 
 
-export default function CatalogView(props){
+export default function CatalogView( {recibirDatos} ){
 
     const [products, setProducts] = useState([])
     useEffect(()=>{
@@ -14,7 +14,7 @@ export default function CatalogView(props){
         <div className="row">
             {products.map(prod=>( 
             <div className="col-4 my-2" key={prod.id}>
-                <CatalogItem name={prod.name} description={prod.description} price={prod.price} enviarDatos={props.recibirDatos}/>
+                <CatalogItem name={prod.name} description={prod.description} price={prod.price} enviarDatos={recibirDatos}/>
             </div>))}
            
         </div>
